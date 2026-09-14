@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Blackline Barber | מספרה לגברים</title>
+    <title>לירם בן שושן | מספרה לגברים</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -154,6 +154,10 @@
             border-radius: 8px;
             font-weight: 800;
             transition: 0.25s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            font-size: 16px;
         }
 
         .primary {
@@ -163,6 +167,8 @@
 
         .secondary {
             border: 1px solid #555;
+            background: transparent;
+            color: white;
         }
 
         .button:hover {
@@ -335,6 +341,80 @@
             color: #888;
         }
 
+        /* ADD REVIEW FORM */
+
+        .add-review-box {
+            max-width: 600px;
+            margin: 50px auto 0;
+            background: #141414;
+            border: 1px solid #242424;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        .add-review-box h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .form-row label {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .form-row input,
+        .form-row textarea {
+            background: #0f0f0f;
+            border: 1px solid #292929;
+            border-radius: 8px;
+            padding: 12px 14px;
+            color: white;
+            font-family: inherit;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .form-row input:focus,
+        .form-row textarea:focus {
+            outline: none;
+            border-color: #c89b5b;
+        }
+
+        .star-picker {
+            display: flex;
+            gap: 6px;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .star-picker span {
+            color: #444;
+            transition: 0.15s;
+        }
+
+        .star-picker span.active {
+            color: #c89b5b;
+        }
+
+        .submit-review-btn {
+            width: 100%;
+        }
+
+        .review-success {
+            display: none;
+            text-align: center;
+            color: #c89b5b;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
         /* CONTACT */
 
         .contact-box {
@@ -433,6 +513,10 @@
             section {
                 padding: 70px 20px;
             }
+
+            .add-review-box {
+                padding: 25px;
+            }
         }
 
     </style>
@@ -445,7 +529,7 @@
     <nav>
 
         <div class="logo">
-            BLACK<span>LINE</span>
+            לירם<span> בן שושן</span>
         </div>
 
         <div class="menu">
@@ -472,7 +556,7 @@
     <div class="hero-content">
 
         <div class="small-title">
-            BLACKLINE BARBER
+            לירם בן שושן
         </div>
 
         <h1>
@@ -589,7 +673,7 @@
             <h2>העבודות שלנו</h2>
 
             <p>
-                כמה דוגמאות מהעבודות של Blackline
+                כמה דוגמאות מהעבודות שלנו
             </p>
 
         </div>
@@ -640,7 +724,7 @@
             </h2>
 
             <p>
-                ב־Blackline אנחנו מאמינים שתספורת טובה
+                אצל לירם בן שושן אנחנו מאמינים שתספורת טובה
                 מתחילה בהקשבה. אנחנו מתאימים את הסגנון
                 לכל לקוח ודואגים לכל פרט קטן בדרך.
             </p>
@@ -694,7 +778,7 @@
         </div>
 
 
-        <div class="reviews">
+        <div class="reviews" id="reviewsGrid">
 
             <div class="review">
 
@@ -751,6 +835,48 @@
 
         </div>
 
+
+        <!-- ADD REVIEW FORM -->
+
+        <div class="add-review-box">
+
+            <h3>הוסיפו ביקורת משלכם</h3>
+
+            <form id="reviewForm">
+
+                <div class="form-row">
+                    <label>שם מלא</label>
+                    <input type="text" id="reviewName" placeholder="לדוגמה: ישראל ישראלי" required>
+                </div>
+
+                <div class="form-row">
+                    <label>דירוג</label>
+                    <div class="star-picker" id="starPicker">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label>הביקורת שלכם</label>
+                    <textarea id="reviewText" rows="4" placeholder="ספרו לנו איך היה..." required></textarea>
+                </div>
+
+                <button type="submit" class="button primary submit-review-btn">
+                    שליחת ביקורת
+                </button>
+
+                <div class="review-success" id="reviewSuccess">
+                    תודה! הביקורת שלכם נוספה בהצלחה 🎉
+                </div>
+
+            </form>
+
+        </div>
+
     </div>
 
 </section>
@@ -780,7 +906,7 @@
                 </p>
 
                 <a
-                    href="https://wa.me/972501234567"
+                    href="https://wa.me/97248254367"
                     target="_blank"
                     class="button primary"
                 >
@@ -797,7 +923,7 @@
                     <span>📍 כתובת</span>
 
                     <strong>
-                        רחוב הרצל 25, נתניה
+                        ארתור הנטקה 64, חיפה
                     </strong>
 
                 </div>
@@ -808,7 +934,7 @@
                     <span>📞 טלפון</span>
 
                     <strong>
-                        050-123-4567
+                        048-254-367
                     </strong>
 
                 </div>
@@ -819,7 +945,9 @@
                     <span>🕐 שעות פעילות</span>
 
                     <strong>
-                        א׳–ה׳ 09:00–20:00
+                        א׳–ה׳ 9:00–19:00<br>
+                        שישי 9:00–14:00<br>
+                        שבת סגור
                     </strong>
 
                 </div>
@@ -846,11 +974,66 @@
 
 <footer>
 
-    © 2026 BLACKLINE BARBER
+    © 2026 לירם בן שושן
     · כל הזכויות שמורות
 
 </footer>
 
+
+<script>
+
+    // Star picker
+    let selectedRating = 5;
+    const starSpans = document.querySelectorAll('#starPicker span');
+
+    function paintStars(rating) {
+        starSpans.forEach(s => {
+            s.classList.toggle('active', Number(s.dataset.value) <= rating);
+        });
+    }
+
+    paintStars(selectedRating);
+
+    starSpans.forEach(s => {
+        s.addEventListener('click', () => {
+            selectedRating = Number(s.dataset.value);
+            paintStars(selectedRating);
+        });
+    });
+
+    // Submit new review
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewsGrid = document.getElementById('reviewsGrid');
+    const reviewSuccess = document.getElementById('reviewSuccess');
+
+    reviewForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('reviewName').value.trim();
+        const text = document.getElementById('reviewText').value.trim();
+
+        if (!name || !text) return;
+
+        const card = document.createElement('div');
+        card.className = 'review';
+
+        card.innerHTML = `
+            <div class="stars">${'★'.repeat(selectedRating)}${'☆'.repeat(5 - selectedRating)}</div>
+            <p>"${text}"</p>
+            <small>— ${name}</small>
+        `;
+
+        reviewsGrid.prepend(card);
+
+        reviewForm.reset();
+        selectedRating = 5;
+        paintStars(selectedRating);
+
+        reviewSuccess.style.display = 'block';
+        setTimeout(() => { reviewSuccess.style.display = 'none'; }, 3000);
+    });
+
+</script>
 
 </body>
 </html>
